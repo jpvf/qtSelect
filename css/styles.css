@@ -1,0 +1,8 @@
+.qtSelect{width:200px;display:block;}
+.qtSelect div{display:block;}
+.qtSelect .selected-option{padding:5px;clear:both;width:100%;overflow:hidden;}
+.qtSelect .selected-option span.selected-option-text{float:left;}
+.qtSelect .options{display:none;position:absolute;z-index:1;overflow:auto;}
+.qtSelect .options div{padding:5px;border:1px solid transparent;}
+.qtSelect .hover-option{background: #bdbdbd;}
+.qtSelect .arrows{float:right;}

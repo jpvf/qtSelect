@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/dark-hive/jquery-ui.css" type="text/css" charset="utf-8"> 
+		<link rel="stylesheet" href="css/styles.css" type="text/css" charset="utf-8">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="js/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.select.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+		window.log = function(){
+		    log.history = log.history || [];   // store logs to an array for reference
+		    log.history.push(arguments);
+		    if(this.console){
+		      console.log( Array.prototype.slice.call(arguments) );
+		    }
+		  };
+		
+		jQuery(function($){
+			$('#switcher').themeswitcher();
+			$('select').qtSelect();
+		});
+		</script>
+		
+		<meta charset=utf-8 />
+	</head>
+	<body>
+		<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+		<div id="switcher"></div>
+		
+		<br><br>
+		<br><br><br><br>
+		<select>
+			<option>Option 1</option>
+			<option selected="selected">Option 2</option>
+			<option>Option 3</option>
+		</select>	
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
