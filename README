@@ -1,12 +1,14 @@
 qtSelect v 1.0
 
 
-A jQuery plugin to give the html's selects a nice and clean UI with the use of the jQuery UI library although it may use predefined user styles.
+A jQuery plugin to give the html's selects a nice and clean UI with the use of the jQuery UI library although it 
+may use predefined user styles.
 
 -----------------------
 How to use?
 
-Right now there aren't many options for the plugin, in fact, there's only one which is the height of the scrollable area within the select, more stuff is on the way but right now that's the only thing.
+Right now there aren't many options for the plugin, in fact, there's only one which is the height of the 
+scrollable area within the select, more stuff is on the way but right now that's the only thing.
 
 Here is how to use it:
 
@@ -15,4 +17,5 @@ $(element-here).qtSelect();
 -----------------------
 What's in the horizon?
 
-Implement many different methods such as: enable, disable, destroy, options getter and setter. Plus, make the select searchable and many, many different stuff.
+Implement many different methods such as: enable, disable, destroy, options getter and setter. Plus, 
+make the select searchable and many, many different stuff.
