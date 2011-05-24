@@ -21,7 +21,7 @@
 			var height    = (newHeight < settings.height) ? newHeight : settings.height;		
 			var width  	  = element.find('div.selected-option').outerWidth();
 			
-			element.find('.options div[selected=selected]').attr('id','current').addClass('ui-state-active');
+			element.find('.options div[selected=selected]:first').attr('id','current').addClass('ui-state-active');
 			
 			element.find('div.options').css({
 				'marginTop' : '-' + element.find('div.selected-option').outerHeight() + 'px',
@@ -32,7 +32,27 @@
 			events._setAll(element, select);		
 			
         });
-      }
+      },
+
+	  destroy : function (){
+			var select = $(this);			
+			select.next('div.qtSelect:first').remove();
+			select.show();
+	  },
+	
+	  disable : function(){
+			var select = $(this);
+			var element = select.next('div.qtSelect:first');
+			element.addClass('ui-state-disabled');
+			element.find('div.options').hide();
+	  },
+	
+	  enable : function(){
+			var select = $(this);
+			var element = select.next('div.qtSelect:first');
+			element.removeClass('ui-state-disabled');
+	  }
+		
     };
 
     var helpers = {
@@ -60,6 +80,9 @@
 		},
 		
 		_toggleDisplayState : function(){
+			if( ! events._is_enabled($(this).parent())){
+				return false;
+			}
 			var element = $(this);
 			var options = element.parent().find('.options');
 			
@@ -71,11 +94,17 @@
 		},
 		
 		_hideOptions : function(){
+			if( ! events._is_enabled($(this).parent())){
+				return false;
+			}
 			$(this).parent().find('.options').hide();
 			events._removeActiveState($(this).find('div.selected-option'));
 		},
 		
 		_mouseOver : function(e){
+			if( ! events._is_enabled($(this).closest('.qtSelect'))){
+				return false;
+			}
 			if (e.type == 'mouseover') {
 			  $(this).addClass('ui-state-hover');
 			} else {
@@ -88,6 +117,9 @@
 			var element  = selected.closest('.qtSelect');
 			var options  = element.find('.options');
 			
+			if( ! events._is_enabled(element)){
+				return false;
+			}
 			
 			element.find('div.selected-option').find('span.selected-option-text').html(selected.html());			
 		
@@ -104,7 +136,10 @@
 		},
 		
 		_changeVal : function(selected, element){
-			element.find('option:selected').removeAttr('selected');
+			if( ! events._is_enabled(selected.closest('.qtSelect'))){
+				return false;
+			}
+			element.children('option').removeAttr('selected');
 			element.find('option:eq(' + selected.index() + ')').attr('selected', 'selected');
 		},
 		
@@ -116,7 +151,17 @@
 		},
 		
 		_removeActiveState : function(element){
+			if( ! events._is_enabled(element)){
+				return false;
+			}
 			element.find('div.selected-option').removeClass('ui-state-active');
+		},
+		
+		_is_enabled : function(element){
+			if (element.hasClass('ui-state-disabled')){
+				return false;
+			}
+			return true;
 		}
 	};
 	
